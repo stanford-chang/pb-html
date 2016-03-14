@@ -29,39 +29,12 @@ app.post('/', function(req, res, next) {
     if (err) {
       return next(err);
     }
-
     const resp = { text: botResponse.responses.join(' ') };
-
     if (botResponse.client_name) {
       resp.clientName = botResponse.client_name;
     }
-
     res.send(resp);
   }
-});
-
-app.use(function(req, res, next) {
-  const err = new Error();
-  err.status = 404;
-  next(err);
-});
-
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
 });
 
 module.exports = app;

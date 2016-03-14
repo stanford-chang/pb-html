@@ -3,13 +3,17 @@ import ChatItem from '../ChatItem';
 
 const MainSection = (props) => {
   return (
-    <div>
-      <ul>
-        {props.messages.map((message, i) => {
-          return <ChatItem message={message} key={i} />;
-        })}
-      </ul>
-    </div>
+    <ul className="messages">
+      {
+        props.messages.map(function(message, i) {
+          return (
+            <li className="clearfix" key={i}>
+              <ChatItem message={message} />
+            </li>
+          );
+        })
+      }
+    </ul>
   );
 };
 

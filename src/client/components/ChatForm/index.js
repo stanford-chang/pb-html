@@ -18,8 +18,21 @@ class ChatForm extends React.Component {
   render() {
     return (
       <form>
-        <input ref="input" placeholder="Say something" />
-        <button type="submit" onClick={::this.handleSubmit}>Say it!</button>
+        <div className="input-group">
+          <input
+            autoFocus
+            className="form-control input-sm"
+            ref="input"
+            placeholder="Say something" />
+          <span className="input-group-btn">
+            <button
+              className="btn btn-warning btn-sm"
+              type="submit"
+              onClick={::this.handleSubmit}>
+              Say it!
+            </button>
+          </span>
+        </div>
       </form>
     )
   }
